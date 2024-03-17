@@ -53,7 +53,7 @@
 
 这章从底层讲解一段代码是如何运行的，涉及汇编代码，[函数调用栈](https://www.zhihu.com/search?q=函数调用栈&search_source=Entity&hybrid_search_source=Entity&hybrid_search_extra={"sourceType":"answer"%2C"sourceId":2655186100}) 等，是相对难啃的一章。
 
-如果实在读不下去可以先读一读王爽的**《汇编语言》**
+如果实在读不下去可以先读一读王爽的 **《汇编语言》**
 
 ![img](https://kkcx.oss-cn-beijing.aliyuncs.com/img/v2-5cfb610c486daa42d88e247081ac065e_720w.webp)
 
