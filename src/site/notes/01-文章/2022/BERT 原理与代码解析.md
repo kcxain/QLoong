@@ -71,3 +71,12 @@ class BertLMPredictionHead(nn.Module):
 ## 微调
 
 ![](https://kkcx.oss-cn-beijing.aliyuncs.com/img/image-20230612235434891.png)
+
+## 参数量计算
+
+![image.png](https://kkcx.oss-cn-beijing.aliyuncs.com/img/20240317164637.png)
+
+- 嵌入层：$V\times H$
+- Atention：$3\times H \times H$
+- Attetion 投影：$H\times H$
+- MLP：$H\times 4H$，$4H\times H$
