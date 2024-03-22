@@ -26,8 +26,32 @@ int gcd(int a, int b) {
 
 题单：[分享丨【题单】二分算法（二分答案/最小化最大值/最大化最小值/第K小） - 力扣（LeetCode）](https://leetcode.cn/circle/discuss/SqopEo/)
 
+最左边界：
+
 ```python
-def lower_bound()
+def lower_bound(nums, target):
+	l, r = 0, len(nums)
+	while l < r:
+		mid = (l + r) >> 1
+		if nums[mid] >= target:
+			r = mid
+		else:
+			l = mid + 1
+	return l
+```
+
+最右边界：
+
+```python
+def higher_bound(nums, target):
+	l, r = 0, len(nums)
+	while l < r:
+		mid = (l + r) >> 1
+		if nums[mid] <= target:
+			l = mid + 1
+		else:
+			r = mid
+	return l - 1
 ```
 
 ### 单调栈
@@ -104,6 +128,25 @@ $f[i][j - v] = \text{max}(f[i-1][j-v], f[i-1][j - 2v],\cdots)$
 
 $f[i][j] = \text{max}(f[i-1][j], f[i][j-v[i]] + w[i])$
 
+对比 01 背包，实际上就是把第二项的 $i-1$ 换成 $i$，可以这样考虑：完全背包不需要约束第 $i$ 个物品的数目
+
+例题：**整数划分**
+
+> 一个正整数 $n$ 可以表示成若干个正整数之和。求出 $n$ 共有多少种不同的划分方法
+
+```cpp
+f[i][j]   = f[i-1][j] + f[i-1][j-2*i] + ... + f[i-1][j-k*i]
+f[i][j-i] =             f[i-1][j-2*i] + ... + f[i-1][j-k*i]
+
+=> f[i][j] = f[i][j-i] + f[i-1][j]
+```
+
+```cpp
+for(int i = 1; i <= n; i++) 
+	for(int j = i; j <= n; j++)
+	f[j] = f[j-i] + f[j]
+```
+
 ### 最长公共子序列
 
 题目列表：
@@ -162,7 +205,7 @@ while(n > 0 && m > 0) {
             res.push_back(b[m - 1]);
             m--;
         }
-    }
+    } 
 }
 while(n > 0) {
     res += a[--n];
